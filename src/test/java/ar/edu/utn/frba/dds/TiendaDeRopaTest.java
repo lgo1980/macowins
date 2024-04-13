@@ -2,6 +2,7 @@ package ar.edu.utn.frba.dds;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -34,7 +35,7 @@ public class TiendaDeRopaTest {
     Prenda prendaNueva2 = new Prenda(TipoPrenda.CAMPERA, 150.0, nueva);
     Item itemNuevo1 = new Item(5, prendaNueva2);
     Venta ventaEfvo2 = new VentaEfectivo(this.obtenerFechaEspecifica(2024, 3, 4));
-    ventaEfvo.agregarItem(itemNuevo1);
+    ventaEfvo2.agregarItem(itemNuevo1);
     this.tiendaDeRopa = new TiendaDeRopa();
     this.tiendaDeRopa.registrarVenta(ventaEfvo);
     this.tiendaDeRopa.registrarVenta(ventaEfvo2);
@@ -44,14 +45,16 @@ public class TiendaDeRopaTest {
   @DisplayName("La ganancia del dia")
   @Test
   public void gananciaDiaTest() {
+    List<Venta> ventas = this.tiendaDeRopa.ventasDelDia(this.obtenerFechaEspecifica(2024, 3, 3));
+    Assertions.assertEquals(2, ventas.size());
     Assertions.assertEquals(952.6, this.tiendaDeRopa.gananciaDia(this.obtenerFechaEspecifica(2024, 3, 3)));
   }
 
   public Date obtenerFechaEspecifica(int anno, int mes, int dia) {
     Calendar calendario = Calendar.getInstance();
     calendario.set(Calendar.YEAR, anno);
-    calendario.set(Calendar.MONTH, mes);
-    calendario.set(Calendar.DAY_OF_MONTH, 13);
+    calendario.set(Calendar.MONTH, Calendar.APRIL);
+    calendario.set(Calendar.DAY_OF_MONTH, dia);
     calendario.set(Calendar.HOUR_OF_DAY, 10); // 10 AM
     calendario.set(Calendar.MINUTE, 0);
     calendario.set(Calendar.SECOND, 0);

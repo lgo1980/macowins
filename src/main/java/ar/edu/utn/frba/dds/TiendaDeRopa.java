@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class TiendaDeRopa {
 
-  private List<Venta> ventas;
+  private final List<Venta> ventas;
 
   public TiendaDeRopa() {
     this.ventas = new ArrayList<>();
@@ -18,7 +18,8 @@ public class TiendaDeRopa {
   }
 
   public Double gananciaDia(Date fecha) {
-    return ventasDelDia(fecha).stream()
+    List<Venta> ventas = ventasDelDia(fecha);
+    return ventas.stream()
         .mapToDouble(Venta::importe)
         .sum();
   }
