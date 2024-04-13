@@ -2,22 +2,22 @@ package ar.edu.utn.frba.dds;
 
 public class Promocion implements Estado {
 
-    private float descuento;
+    private Double descuento;
 
-    public Promocion(float descuento) {
+    public Promocion(Double descuento) {
         this.descuento = descuento;
     }
 
-    public float getDescuento() {
+    public Double getDescuento() {
         return descuento;
     }
 
-    public void setDescuento(float descuento) {
+    public void setDescuento(Double descuento) {
         this.descuento = descuento;
     }
 
     @Override
-    public float precio(float precioBase) {
+    public Double precio(Double precioBase) {
 
         return precioBase - this.descuento;
     }

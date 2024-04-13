@@ -3,7 +3,7 @@ package ar.edu.utn.frba.dds;
 public class Nueva implements Estado{
 
     @Override
-    public float precio(float precioBase) {
+    public Double precio(Double precioBase) {
         return precioBase;
     }
 }
